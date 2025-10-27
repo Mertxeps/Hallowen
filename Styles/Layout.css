@@ -1,0 +1,154 @@
+* {
+	box-sizing: border-box;
+	margin: 0; padding: 0;
+}
+
+body {
+	font-family: Calibri, sans-serif;
+}
+
+.Cabecera {
+	margin: auto;
+	width: 100%;
+}
+
+.BarrasNavegacion {
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+	margin: auto;
+	width: 100%;
+    padding: 10px 5%;
+    position: relative;
+}
+
+.menu-container {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    width: 100%; 
+}
+
+#CalabazaFestiva {
+    width: 10%;
+    /* height: 50px; */
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.menu li {
+	position: relative;
+    text-align: center;
+	}
+
+.menu li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    padding: 5px 10px;
+    transition: 0.3s;
+}
+.menu li a:hover {
+	background-color: #F54927;
+	color: yellow;
+	border-radius: 5px;
+}
+
+/* Hamburgesa */
+.hamburger {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* Checkbox oculto */
+#menu-toggle {
+	display: none;
+}
+
+.ContenedorFooter {
+        background-color: black;
+        padding: .5%;
+    }
+
+.copy {
+	text-align: center;
+	font-size: 24px;
+	color: white;
+}
+
+/* --- MEDIA QUERIES --- */
+
+/* para portátiles  */
+/* @media (min-width: 1281px) and (max-width: 1440px) {} */
+
+/* Para tables */
+@media screen and (max-width: 768px) {
+    .hamburger {
+		display: block;
+	}
+
+    /* Ocultamos el menú-container por defecto */
+    .menu-container {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: white;
+        position: relative;
+        left: 0;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    /* Cuando se activa la hamburguesa */
+    #menu-toggle:checked + .hamburger + .menu-container {
+        display: flex;
+    }
+
+    /* Logo dentro del menú */
+    .menu-container .logo {
+        display: flex;
+        justify-content: center;
+        padding: 15px 0;
+    }
+    .menu-container .logo img {
+		width: 80px;
+		height: 80px;
+	}
+
+    /* Menú vertical */
+    .menu {
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+    }
+	
+    .menu li {
+		text-align: center;
+		padding: 10px 0;
+	}
+	
+    .menu li a {
+		font-size: 18px;
+	}
+}
+
+/* Para móviles */
+@media screen and (max-width: 480px) {
+    .menu-container .logo img {
+		width: 60px;
+		height: 60px;
+	}
+
+    nav {
+        position: sticky;
+        top: 0;
+    }
+
+    .menu-container {
+        position: relative;
+    }
+}
