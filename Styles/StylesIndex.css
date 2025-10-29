@@ -11,6 +11,16 @@ header ul li:nth-of-type(1) {
 	margin-bottom: 2%;
 }
 
+.Container img:first-of-type {
+	width: 100%;
+	object-fit: contain;
+	display: block; /* Asegura que la imagen no tenga espacio extra debajo */
+}
+
+.HalloweenInicio {
+	display: flex;
+}
+
 #CalabazaFestiva1 {
     width: 20%;
 }
@@ -22,4 +32,18 @@ aside {
 	border: 2px solid black;
 	display: block;
 	text-align: center;
+}
+
+section {
+	margin: 2%;
+	width: 55%;
+	padding: 1%;
+	background-color: white;
+	border: 2px solid black;
+	text-align: justify;
+}
+
+section p {
+	padding-top: 2%;
+	text-align: justify;
 }
