@@ -3,11 +3,6 @@ header ul li:nth-of-type(2) {
 	text-decoration: overline;
 }
 
-#CalabazaFestiva {
-	margin: auto;
-	width: 10%;
-}
-
 :root {
   --black: #000000;
   --dark-blue: #22366c;
@@ -33,15 +28,12 @@ header ul li:nth-of-type(2) {
 main {
   margin: auto;
   width: 95%;
-  background-color: #7094c4;
+  margin-bottom: 2%;
+  background-color: bisque;
+  border: 3px solid black;
   min-height: 100vh;
   overflow: hidden;
 }
-
-/* .CalabazaFestiva1 {
-  margin: auto;
-  width: 100%;
-} */
 
 .scene-container {
   position: relative;
