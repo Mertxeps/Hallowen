@@ -3,13 +3,13 @@ header ul li:nth-of-type(1) {
 	text-decoration: overline;
 }
 
-.Container {
+/* .Container {
 	margin: auto;
 	width: 95%;
 	background-color: bisque;
 	border: 3px solid black;
 	margin-bottom: 2%;
-}
+} */
 
 .Container img:first-of-type {
 	width: 100%;
@@ -47,8 +47,3 @@ section p {
 	padding-top: 2%;
 	text-align: justify;
 }
-
-/* article {
-	background-color: black;
-	color: white;
-} */

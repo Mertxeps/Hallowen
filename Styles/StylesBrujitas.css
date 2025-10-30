@@ -3,465 +3,111 @@ header ul li:nth-of-type(2) {
 	text-decoration: overline;
 }
 
-:root {
-  --black: #000000;
-  --dark-blue: #22366c;
-  --light-blue: #439abf;
-  --med-blue: #294679;
-  --stars: #e9ae4b;
+@import url(https://fonts.bunny.net/css?family=are-you-serious:400);
+/* body {
+	font-family: "Are You Serious", handwriting;
+	height: 100vh;
+	margin: 0;
+	display: grid;
+	place-items: center;
+	background: #000;
+	color: #fff;
+} */
+@media (prefers-reduced-motion: no-preference) {
+	/*  animated smoke - an old classic */
+	body::before {
+		content: "";
+		position: fixed;
+		inset: 0;
+		margin: auto;
+		/* background-image: url("https://raw.githubusercontent.com/cbolson/icodethis-challenges/main/assets/images/smoke-ani.webp"); */
+		opacity: 0.2;
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		z-index: 1;
+		outline: 1px dashed red;
+		pointer-events: none;
+	}
+}
+.wrapper {
+	display: grid;
+	place-items: center;
+	gap: 2rem;
+	> h1 {
+		margin: 0;
+		color: rgb(94, 165, 0);
+		font-size: clamp(2rem, 3.5vw + 0.4rem, 3rem);
+		text-shadow: 0 0 20px rgb(94, 165, 0);
+	}
 }
 
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
+.spooky {
+	--ani-duration: 15s;
+	--turns: 5turn;
+	position: relative;
+	inset: 0;
+	margin: auto;
+
+	perspective: 500px;
+	transform-style: preserve-3d;
+	display: grid;
+	place-content: center;
+
+
+	
+	&::before {
+		content: "👽";
+		font-size: clamp(100px, 15.5vw + 0.4rem, 400px);
+		animation-name: --swap-mask, --rotate-wrapper;
+		animation-duration: var(--ani-duration);
+		animation-timing-function: linear;
+		animation-delay: 0ms;
+		animation-iteration-count: infinite;
+		text-shadow: 0 0 60px rgb(94, 165, 0);
+	}
+	&:hover::before {
+		animation-play-state: paused;
+	}
 }
 
-*:before,
-*:after {
-  content: "";
-  position: absolute;
-  box-sizing: border-box;
+@keyframes --swap-mask {
+	0% {
+		content: "🧟";
+	}
+	10% {
+		content: "👽";
+	}
+	20% {
+		content: "👺";
+	}
+	30% {
+		content: "🤡";
+	}
+	40% {
+		content: "👹";
+	}
+	50% {
+		content: "💀";
+	}
+	60% {
+		content: "🎃";
+	}
+	70% {
+		content: "🦇";
+	}
+	80% {
+		content: "🥀";
+	}
+	90% {
+		content: "🪦 ";
+	}
 }
-
-main {
-  margin: auto;
-  width: 95%;
-  margin-bottom: 2%;
-  background-color: bisque;
-  border: 3px solid black;
-  min-height: 100vh;
-  overflow: hidden;
-}
-
-.scene-container {
-  position: relative;
-  margin-bottom: 5%;
-  margin-top: 5%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.window {
-  width: 450px;
-  height: 600px;
-  background: linear-gradient(to bottom, #2d4a6e 0%, #1a2d4a 30%, #0f1b2e 60%, #0a0f1a 100%);
-  border: 32px solid var(--black);
-  position: relative;
-  border-bottom: none;
-  overflow: hidden;
-}
-
-.window:before {
-  background-color: var(--black);
-  width: calc(100% + 96px);
-  height: 32px;
-  left: -48px;
-  bottom: 0;
-}
-
-.moon {
-  background: radial-gradient(circle at 30% 30%, #ffffff, #e6e6e6);
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  position: absolute;
-  left: 50px;
-  top: 40px;
-  z-index: 10;
-  box-shadow: 0 0 3rem rgba(255, 255, 255, 0.6);
-}
-
-.moon:before {
-  background: rgba(0, 0, 0, 0.08);
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  position: absolute;
-  left: 28px;
-  top: 24px;
-}
-
-.moon:after {
-  background: rgba(0, 0, 0, 0.06);
-  width: 19px;
-  height: 19px;
-  border-radius: 50%;
-  position: absolute;
-  left: 72px;
-  top: 60px;
-}
-
-.star {
-  animation: twinkle 3s ease-in-out infinite;
-  background: #ffffff;
-  border-radius: 50%;
-  height: 3px;
-  width: 3px;
-  position: absolute;
-  z-index: 5;
-}
-
-.star:before,
-.star:after {
-  display: none;
-}
-
-.star-1 {
-  left: 80px;
-  top: 64px;
-}
-
-.star-2 {
-  left: 160px;
-  top: 96px;
-  animation-delay: 0.5s;
-}
-
-.star-3 {
-  left: 350px;
-  top: 150px;
-  animation-delay: 1s;
-}
-
-.star-4 {
-  left: 320px;
-  top: 80px;
-  animation-delay: 1.5s;
-}
-
-.star-5 {
-  left: 96px;
-  top: 172px;
-  animation-delay: 2s;
-}
-
-.star-6 {
-  left: 200px;
-  top: 50px;
-  animation-delay: 2.5s;
-}
-
-.star-7 {
-  left: 280px;
-  top: 200px;
-  animation-delay: 0.8s;
-}
-
-.star-8 {
-  left: 150px;
-  top: 180px;
-  animation-delay: 1.2s;
-}
-
-.star-9 {
-  left: 380px;
-  top: 120px;
-  animation-delay: 3s;
-}
-
-.star-10 {
-  left: 220px;
-  top: 300px;
-  animation-delay: 1.8s;
-}
-
-.star-11 {
-  left: 40px;
-  top: 250px;
-  animation-delay: 2.3s;
-}
-
-.star-12 {
-  left: 370px;
-  top: 320px;
-  animation-delay: 0.3s;
-}
-
-.star-13 {
-  left: 120px;
-  top: 380px;
-  animation-delay: 1.5s;
-}
-
-.star-14 {
-  left: 300px;
-  top: 260px;
-  animation-delay: 2.8s;
-}
-
-.star-15 {
-  left: 190px;
-  top: 420px;
-  animation-delay: 0.7s;
-}
-
-@keyframes twinkle {
-  0%,
-  100% {
-    opacity: 0.3;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-.cat {
-  background-color: var(--black);
-  z-index: 100;
-  position: absolute;
-  bottom: 0;
-  right: 150px;
-}
-
-.cat-body {
-  position: absolute;
-  width: 55px;
-  height: 110px;
-  border-top-left-radius: 55px;
-  border-top-right-radius: 55px;
-  background-color: inherit;
-  bottom: 0;
-  transform-origin: left bottom;
-}
-
-.cat-belly {
-  background-color: inherit;
-  position: absolute;
-  width: 100px;
-  height: 95px;
-  bottom: 0;
-  border-radius: 50%;
-  transform-origin: left bottom;
-}
-
-.cat-belly:before {
-  background-color: inherit;
-  width: 14px;
-  height: 90px;
-  top: 73px;
-  right: 16px;
-  border-radius: 14px;
-}
-
-.cat-ears:before {
-  width: 0;
-  height: 0;
-  border-bottom: 30px solid var(--black);
-  border-right: 35px solid transparent;
-  top: -10px;
-}
-
-.cat-ears:after {
-  width: 0;
-  height: 0;
-  border-bottom: 30px solid var(--black);
-  border-left: 35px solid transparent;
-  top: -10px;
-  right: 0;
-}
-
-.witch-container {
-  position: absolute;
-  top: 100px;
-  left: -150px;
-  z-index: 20;
-  animation: fly-across 12s linear infinite;
-}
-
-@keyframes fly-across {
-  0% {
-    left: -150px;
-    top: 100px;
-    transform: scaleX(1);
-  }
-  48% {
-    transform: scaleX(1);
-  }
-  50% {
-    left: 550px;
-    top: 80px;
-    transform: scaleX(-1);
-  }
-  98% {
-    transform: scaleX(-1);
-  }
-  100% {
-    left: -150px;
-    top: 100px;
-    transform: scaleX(1);
-  }
-}
-
-.witch {
-  transform: scale(0.35) rotate(-10deg);
-  animation: bob 2s ease-in-out infinite;
-}
-
-@keyframes bob {
-  0%, 100% {
-    transform: scale(0.35) rotate(-10deg) translateY(0);
-  }
-  50% {
-    transform: scale(0.35) rotate(-10deg) translateY(-15px);
-  }
-}
-
-.witch-broom {
-  position: relative;
-  height: 20px;
-  width: 0px;
-  border-left: 80px solid var(--black);
-  border-top: 30px solid transparent;
-  border-bottom: 30px solid transparent;
-}
-
-.witch-broom-bristles-1 {
-  position: relative;
-  bottom: 5px;
-  right: 1px;
-  height: 28px;
-  width: 10px;
-  background-color: var(--black);
-}
-
-.witch-broom-bristles-2 {
-  position: relative;
-  left: 9px;
-  bottom: 6px;
-  height: 10px;
-  width: 0px;
-  border-right: 25px solid var(--black);
-  border-top: 15px solid transparent;
-  border-bottom: 15px solid transparent;
-}
-
-.witch-broom-stick {
-  position: relative;
-  left: 10px;
-  bottom: 3.5px;
-  width: 320px;
-  height: 15px;
-  background-color: var(--black);
-  border-radius: 100px;
-}
-
-.witch-face {
-  background-color: var(--black);
-  height: 60px;
-  width: 60px;
-  border-radius: 50%;
-  position: relative;
-  bottom: 216px;
-  left: 230px;
-  transform: rotate(10deg);
-}
-
-.witch-nose {
-  background-color: var(--black);
-  height: 15px;
-  width: 15px;
-  border-radius: 50%;
-  position: relative;
-  left: 50px;
-  top: 20px;
-}
-
-.witch-hair {
-  height: 100px;
-  width: 40px;
-  background-color: var(--black);
-  border-radius: 40px;
-  position: relative;
-  transform: rotate(15deg);
-  right: 10px;
-}
-
-.witch-neck {
-  height: 30px;
-  width: 15px;
-  background-color: var(--black);
-  border-radius: 40px;
-  position: relative;
-  bottom: 95px;
-  left: 30px;
-  transform: rotate(5deg);
-}
-
-.witch-hat {
-  background-color: var(--black);
-  height: 25px;
-  width: 115px;
-  border-radius: 50%;
-  position: relative;
-  bottom: 115px;
-  right: 30px;
-  transform: rotate(-15deg);
-}
-
-.witch-hat-cone {
-  height: 0px;
-  width: 0px;
-  border-left: 40px solid transparent;
-  border-right: 40px solid transparent;
-  border-bottom: 80px solid var(--black);
-  position: relative;
-  bottom: 68px;
-  left: 18px;
-}
-
-.witch-hat-point {
-  height: 0px;
-  width: 0px;
-  border-top: 15px solid transparent;
-  border-bottom: 15px solid transparent;
-  border-right: 40px solid var(--black);
-  position: relative;
-  right: 39.5px;
-  bottom: 0.5px;
-  transform: rotate(5deg);
-}
-
-.witch-cloak {
-  height: 0px;
-  width: 20px;
-  border-bottom: 135px solid var(--black);
-  border-left: 50px solid transparent;
-  border-right: 50px solid transparent;
-  position: relative;
-  bottom: 102px;
-  right: 23px;
-}
-
-.witch-hand {
-  height: 110px;
-  width: 20px;
-  border-radius: 30px;
-  background-color: var(--black);
-  transform: rotate(-40deg);
-  position: relative;
-  bottom: 235px;
-  left: 60px;
-}
-
-.witch-leg-1,
-.witch-leg-2 {
-  position: relative;
-  height: 60px;
-  width: 16px;
-  background-color: var(--black);
-  transform: rotate(41deg);
-  border-radius: 50px;
-}
-
-.witch-leg-1 {
-  bottom: 230px;
-  left: 0px;
-}
-
-.witch-leg-2 {
-  bottom: 300px;
-  left: 40px;
+@keyframes --rotate-wrapper {
+	from {
+		transform: rotateY(0deg);
+	}
+	to {
+		transform: rotateY(var(--turns));
+	}
 }

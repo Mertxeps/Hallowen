@@ -1,11 +1,11 @@
 
-/* .Container {
+.Container {
 	margin: auto;
 	width: 95%;
 	background-color: bisque;
 	border: 3px solid black;
 	margin-bottom: 2%;
-} */
+}
 
 .CalabazaFestiva1 {
 	background-image: url(../Images/Logo\ Calabaza.webp); 
@@ -14,12 +14,4 @@
 	position: relative;
 	width: 100%;
 	height: 210vh; /* antes estaba en 4vh */
-}
-
-main {
-  margin: auto;
-  width: 95%;
-  background-color: bisque;
-  min-height: 100vh;
-  overflow: hidden;
 }
