@@ -1,0 +1,9 @@
+
+.CalabazaFestiva1 {
+	background-image: url(../Images/Logo\ Calabaza.webp); 
+	background-size: cover;
+	background-position: center;
+	position: relative;
+	width: 100%;
+	height: 210vh; /* antes estaba en 4vh */
+}

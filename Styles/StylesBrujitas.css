@@ -31,13 +31,17 @@ header ul li:nth-of-type(2) {
 }
 
 main {
+  margin: auto;
+  width: 95%;
   background-color: #7094c4;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
   min-height: 100vh;
   overflow: hidden;
 }
+
+/* .CalabazaFestiva1 {
+  margin: auto;
+  width: 100%;
+} */
 
 .scene-container {
   position: relative;
