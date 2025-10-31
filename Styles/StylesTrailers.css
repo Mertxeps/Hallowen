@@ -19,3 +19,30 @@ header ul li:nth-of-type(3) {
 audio {
   margin: auto;
 }
+
+#EspaciadoEspecial {
+  margin-bottom: 2%;
+}
+
+.TextoBorde {
+  margin: auto;
+  width: 80%;
+  border-radius: 2%;
+  border: 2px solid black;
+  background-color: rgb(211, 209, 206);
+  margin-top: 2%;
+  padding: 1.5%;
+  font-size: 18px;
+}
+
+.ImagenesFantasmas {
+  display: flex;
+	justify-content: center;
+	justify-items: center;
+	gap: 5%;
+	margin: auto;
+	width: 50%;
+  margin-top: 2%;
+	border-radius: 2%;
+	background-color: white;
+}
