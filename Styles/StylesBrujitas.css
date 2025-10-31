@@ -3,6 +3,14 @@ header ul li:nth-of-type(2) {
 	text-decoration: overline;
 }
 
+/* .Espaciado {
+	margin: auto;
+	width: 90%;
+	text-align: justify;
+	font-size: 18px;
+	margin-top: 2%;
+} */
+
 @import url(https://fonts.bunny.net/css?family=are-you-serious:400);
 /* body {
 	font-family: "Are You Serious", handwriting;
@@ -30,6 +38,7 @@ header ul li:nth-of-type(2) {
 		pointer-events: none;
 	}
 }
+
 .wrapper {
 	display: grid;
 	place-items: center;
@@ -53,8 +62,6 @@ header ul li:nth-of-type(2) {
 	transform-style: preserve-3d;
 	display: grid;
 	place-content: center;
-
-
 	
 	&::before {
 		content: "👽";

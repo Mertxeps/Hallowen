@@ -7,8 +7,15 @@ header ul li:nth-of-type(3) {
 }
 
 #canvas {
+  /* display: flex;
+  justify-content: center;
+  justify-items: center; */
   position: relative;
   border: solid;
-  margin-left: calc((100vw - 600px) / 2);
+  margin-top: 2%;
   background-image: url("https://assets.codepen.io/550547/sewer_drain_clown.png");
+}
+
+audio {
+  margin: auto;
 }
