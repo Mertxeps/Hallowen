@@ -7,9 +7,7 @@ header ul li:nth-of-type(3) {
 }
 
 #canvas {
-  /* display: flex;
-  justify-content: center;
-  justify-items: center; */
+  left: 30%;
   position: relative;
   border: solid;
   margin-top: 2%;
@@ -18,6 +16,8 @@ header ul li:nth-of-type(3) {
 
 audio {
   margin: auto;
+  margin-top: 2%;
+  margin-left: 40%;
 }
 
 #EspaciadoEspecial {
@@ -43,6 +43,7 @@ audio {
 	margin: auto;
 	width: 50%;
   margin-top: 2%;
+  margin-bottom: 2%;
 	border-radius: 2%;
 	background-color: white;
 }
