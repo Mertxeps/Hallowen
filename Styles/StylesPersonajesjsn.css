@@ -1,0 +1,47 @@
+
+* {
+	box-sizing: content-box;
+}
+
+body {
+    background-color: bisque;
+}
+
+#Personajes {
+    text-align: center;
+    /* display: flex;
+    justify-content: center;
+    justify-items: center; */
+}
+
+#ListaLibros {
+    color: blue;
+    text-align: center;
+    margin-top: 2%;
+}
+
+/* .libro {
+    margin: auto;
+    width: 30%;
+    margin: 1.5%;
+    background-color: white;
+    border: 2px solid blue;
+    border-radius: 3%;
+    display: inline-block;
+}
+
+.libro h2 {
+    color: blue;
+    padding-left: 2%;
+}
+
+.libro p {
+    margin: auto;
+    width: 95%;
+    padding-bottom: 2%;
+    text-align: justify;
+}
+
+.precio {
+    font-weight: bold;
+} */
