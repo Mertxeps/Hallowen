@@ -14,10 +14,34 @@ header ul li:nth-of-type(3) {
   background-image: url("https://assets.codepen.io/550547/sewer_drain_clown.png");
 }
 
-#Thriller {
+.Videos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5%;
+  flex-wrap: wrap;
+  width: 100%;
   margin: auto;
-  width: 50%;
-  height: auto;
+  padding-top: 2%;
+}
+
+/* Cada contenedor de vídeo tendrá el mismo tamaño fijo o proporcional */
+.video-container {
+  position: relative;
+  width: 45%;           /* ambos contenedores ocupan el mismo ancho */
+  aspect-ratio: 16 / 9; /* fuerza la misma proporción (se puede ajustar a 4/3, 1/1, etc.) */
+  overflow: hidden;
+}
+
+/* El vídeo se ajusta perfectamente dentro de la caja */
+.video-container video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ajusta el vídeo sin deformarlo */
+  border-radius: 10px; /* opcional */
 }
 
 audio {
