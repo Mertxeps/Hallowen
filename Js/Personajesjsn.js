@@ -1,42 +1,27 @@
-// Función para crear la estructura HTML de un libro, necesita recibir un objeto "libro"
-function crearElementoLibro(libro) {
-    const divLibro = document.createElement('div');
-    divLibro.className = 'libro';
+// Función para crear la estructura HTML de un personaje, necesita recibir un objeto "personaje"
+function crearElementoPersonaje(Personaje) {
+    const divPersonaje = document.createElement('div');
+    divPersonaje.className = 'Personaje';
 
     const titulo = document.createElement('h2');
     titulo.className = 'titulo';
-    titulo.textContent = libro.titulo;
-
-    // const autor = document.createElement('p');
-    // autor.className = 'autor';
-    // autor.textContent = `Autor: ${libro.autor}`;
-
-    // const genero = document.createElement('p');
-    // genero.className = 'genero';
-    // genero.textContent = `Género: ${libro.genero}`;
+    titulo.textContent = Personaje.titulo;
 
     const sinopsis = document.createElement('p');
-    sinopsis.textContent = libro.sinopsis;
+    sinopsis.textContent = Personaje.sinopsis;
 
-    // const precio = document.createElement('p');
-    // precio.className = 'precio';
-    // precio.textContent = `$${libro.precio.toFixed(2)}`;
+    divPersonaje.appendChild(titulo);
+    divPersonaje.appendChild(sinopsis);
 
-    divLibro.appendChild(titulo);
-    // divLibro.appendChild(autor);
-    // divLibro.appendChild(genero);
-    divLibro.appendChild(sinopsis);
-    // divLibro.appendChild(precio);
-
-    // Retorna un elemento div libro
-    return divLibro;
+    // Retorna un elemento div personaje
+    return divPersonaje;
 }
 
 // Función asincrona recoger todos los datos del JSON
 async function obtenerDatosJSON() {
     try {
-        const respuesta = await fetch("./libros.json"); //await para esperar la respuesta del fetch, la ruta es relativa al html, no a este documento
-        //const respuesta = await fetch("./../data/libros.json"); //await para esperar la respuesta del fetch, la ruta es relativa al html, no a este documento
+        const respuesta = await fetch("./Personajes.json"); //await para esperar la respuesta del fetch, la ruta es relativa al html, no a este documento
+        //const respuesta = await fetch("./../data/Personajes.json"); //await para esperar la respuesta del fetch, la ruta es relativa al html, no a este documento
         return await respuesta.json();
     } catch (error) {
         console.error('Error:', error);
@@ -44,20 +29,20 @@ async function obtenerDatosJSON() {
     }
 }
 
-// Función asíncrona para cargar cada libro en la lista
-async function cargarLibros() {
+// Función asíncrona para cargar cada pesonaje en la lista
+async function cargarPersonajes() {
     try {
-        // Selecciona el contenedor de los libros
-        const contenedor = document.getElementById("lista-libros");
+        // Selecciona el contenedor de los personajes
+        const contenedor = document.getElementById("ListaPersonajess");
 
         // Recoge la respuesta de obtenerDatosJSON
-       const datosLibros = await obtenerDatosJSON();
+       const datosPersonajes = await obtenerDatosJSON();
 
-        // Por cada uno de los elementos del JSON, genera un elemento con crearElementoLibro()
-        datosLibros.forEach(libro => {
-            const elementoLibro = crearElementoLibro(libro);
+        // Por cada uno de los elementos del JSON, genera un elemento con crearElementoPersonaje()
+        datosPersonajes.forEach(Personaje => {
+            const elementoPersonaje = crearElementoPersonaje(Personaje);
             // Lo añade al contenedor principal
-            contenedor.appendChild(elementoLibro);
+            contenedor.appendChild(elementoPersonaje);
         });
 
     } catch (error) {
@@ -65,5 +50,5 @@ async function cargarLibros() {
     }
 }
 
-// Cargar los libros cuando se cargue la página
+// Cargar los personajes cuando se cargue la página
 window.addEventListener('load', cargarPersonajes);
