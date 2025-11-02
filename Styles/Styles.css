@@ -23,3 +23,39 @@
 	font-size: 18px;
 	margin-top: 2%;
 }
+
+/* --- MEDIA QUERIES --- */
+
+/* para pantallas grandes  */
+/* @media (min-width: 1281px) and (max-width: 1440px) {
+	.CalabazaFestiva1 {
+		width: 60vw;
+		height: 70vh;
+		background-image: url("../Images/Calabaza.png");
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+		margin: 3% auto;
+	}
+} */
+
+/* para portátiles  */
+/* @media (min-width: 1281px) and (max-width: 1440px) {} */
+
+/* Para tables */
+@media screen and (max-width: 768px) {
+  .CalabazaFestiva1 {
+    width: 80vw;   /* Más ancha en pantallas medianas */
+    height: 50vh;  /* Un poco más baja para que no ocupe demasiado */
+    margin: 4% auto;
+  }
+}
+
+/* Para móviles */
+@media screen and (max-width: 480px) {
+  .CalabazaFestiva1 {
+    width: 90vw;   		/* Casi todo el ancho de la pantalla */
+    height: 40vh; 		/* Más compacta en vertical */
+    margin: 5% auto;
+  }
+}

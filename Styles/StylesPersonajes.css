@@ -1,3 +1,83 @@
 header ul li:nth-of-type(4) {
 	text-decoration: overline;
 }
+
+/* .CalabazaFestiva1 {
+  width: 60vw;
+  height: 70vh;
+  background-image: url("../Images/Calabaza.png");
+  background-size: contain;    La imagen se ajusta al div sin deformarse 
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 3% auto;
+} */
+
+.Imagenes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5%;
+}
+
+.Imagenes img {
+  width: 40vw;
+  height: 125vh;
+  object-fit: cover;	/* Asegura que la imagen se recorte bien si es necesario */
+  margin: 2% 0;
+}
+
+/* --- MEDIA QUERIES --- */
+
+/* para pantallas grandes  */
+/* @media (min-width: 1281px) and (max-width: 1440px) {
+	.CalabazaFestiva1 {
+		width: 60vw;
+		height: 70vh;
+		background-image: url("../Images/Calabaza.png");
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+		margin: 3% auto;
+	}
+} */
+
+/* para portátiles  */
+/* @media (min-width: 1281px) and (max-width: 1440px) {} */
+
+/* Para tables */
+@media screen and (max-width: 768px) {
+  .CalabazaFestiva1 {
+    width: 80vw;   /* Más ancha en pantallas medianas */
+    height: 50vh;  /* Un poco más baja para que no ocupe demasiado */
+    margin: 4% auto;
+  }
+
+	.Imagenes {
+    flex-direction: column;
+    gap: 2rem;                 /* Reduce el espacio entre las imágenes */
+  }
+
+  .Imagenes img {
+    width: 70vw;
+    height: 60vh;
+  }
+}
+
+/* Para móviles */
+@media screen and (max-width: 480px) {
+  .CalabazaFestiva1 {
+    width: 90vw;   		/* Casi todo el ancho de la pantalla */
+    height: 40vh; 		/* Más compacta en vertical */
+    margin: 5% auto;
+  }
+
+	.Imagenes {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .Imagenes img {
+    width: 85vw;		/* Casi todo el ancho de la pantalla */
+    height: 50vh;       /* Más baja para evitar scroll excesivo */
+  }
+}
