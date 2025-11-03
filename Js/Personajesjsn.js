@@ -20,7 +20,7 @@ function crearElementoPersonaje(Personaje) {
 // Función asincrona recoger todos los datos del JSON
 async function obtenerDatosJSON() {
     try {
-        const respuesta = await fetch("./Personajes.json"); //await para esperar la respuesta del fetch, la ruta es relativa al html, no a este documento
+        const respuesta = await fetch("./../Jsn/Personajes.json"); //await para esperar la respuesta del fetch, la ruta es relativa al html, no a este documento
         //const respuesta = await fetch("./../data/Personajes.json"); //await para esperar la respuesta del fetch, la ruta es relativa al html, no a este documento
         return await respuesta.json();
     } catch (error) {
@@ -33,7 +33,7 @@ async function obtenerDatosJSON() {
 async function cargarPersonajes() {
     try {
         // Selecciona el contenedor de los personajes
-        const contenedor = document.getElementById("ListaPersonajess");
+        const contenedor = document.getElementById("ListaPersonajes");
 
         // Recoge la respuesta de obtenerDatosJSON
        const datosPersonajes = await obtenerDatosJSON();
