@@ -3,15 +3,67 @@ Container {
     background-color: bisque;
 }
 
-#Personajes {
+#ListaPersonajesTitulo {
     text-align: center;
-    /* display: flex;
-    justify-content: center;
-    justify-items: center; */
+    color: blue;  
+    margin-top: 2%; 
 }
 
-#ListaPersonajes {
-    color: blue;
+#Personajes {
     text-align: center;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 5% ;
     margin-top: 2%;
+}
+
+.ListadoPersonajes {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    flex-wrap: wrap;
+    gap: 5%;
+    margin: 2%;
+}
+
+.Personaje {
+  display: inline-block;
+  width: 25%;  
+  height: auto;
+  color: black;
+  border: 2px solid blue;
+  border-radius: 3%;
+  background-color: azure;
+}
+
+.Personaje h2 {
+    color: blue;
+}
+
+.Personaje p {
+    margin: auto;
+    width: 95%;
+    padding-bottom: 2%;
+    text-align: justify;
+    color: black;
+    font-size: 22px;
+}
+
+
+
+
+
+/* --- MEDIA QUERIES --- */
+
+/* Para tables */
+@media screen and (max-width: 768px) {
+
+}
+
+/* Para móviles */
+@media screen and (max-width: 480px) {
+
 }

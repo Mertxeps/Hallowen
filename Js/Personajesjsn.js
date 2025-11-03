@@ -33,7 +33,7 @@ async function obtenerDatosJSON() {
 async function cargarPersonajes() {
     try {
         // Selecciona el contenedor de los personajes
-        const contenedor = document.getElementById("ListaPersonajes");
+        const contenedor = document.getElementById("Personajes");
 
         // Recoge la respuesta de obtenerDatosJSON
        const datosPersonajes = await obtenerDatosJSON();

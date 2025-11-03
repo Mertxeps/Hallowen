@@ -2,16 +2,6 @@ header ul li:nth-of-type(4) {
 	text-decoration: overline;
 }
 
-/* .CalabazaFestiva1 {
-  width: 60vw;
-  height: 70vh;
-  background-image: url("../Images/Calabaza.png");
-  background-size: contain;    La imagen se ajusta al div sin deformarse 
-  background-repeat: no-repeat;
-  background-position: center;
-  margin: 3% auto;
-} */
-
 .Imagenes {
   display: flex;
   justify-content: center;
@@ -27,22 +17,6 @@ header ul li:nth-of-type(4) {
 }
 
 /* --- MEDIA QUERIES --- */
-
-/* para pantallas grandes  */
-/* @media (min-width: 1281px) and (max-width: 1440px) {
-	.CalabazaFestiva1 {
-		width: 60vw;
-		height: 70vh;
-		background-image: url("../Images/Calabaza.png");
-		background-size: contain;
-		background-repeat: no-repeat;
-		background-position: center;
-		margin: 3% auto;
-	}
-} */
-
-/* para portátiles  */
-/* @media (min-width: 1281px) and (max-width: 1440px) {} */
 
 /* Para tables */
 @media screen and (max-width: 768px) {
