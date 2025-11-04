@@ -3,36 +3,6 @@ header ul li:nth-of-type(2) {
 	text-decoration: overline;
 }
 
-.bat {
-  position: absolute;
-  top: 50%;
-  left: -50px;
-  width: 40px;
-  height: 20px;
-  background: url('../Images/Murciélagos/Murcielago.PNG') no-repeat center/contain; /* silueta de murciélago */
-  /* Esto hará que tres murciélagos (usando una imagen PNG) vuelen de izquierda a derecha de forma cíclica. Puedes usar cualquier imagen PNG de murciélago con fondo transparente (por ejemplo, de Flaticon o Pixabay). */
-  animation: fly 8s linear infinite;
-}
-
-.bat.delay1 { animation-delay: 2s; top: 30%; }
-.bat.delay2 { animation-delay: 4s; top: 70%; }
-
-@keyframes fly {
-  0% {
-    transform: translateX(0) scale(1) rotate(0deg);
-    opacity: 0;
-  }
-  10% { opacity: 1; }
-  50% {
-    transform: translateX(50vw) translateY(-50px) rotate(10deg);
-  }
-  100% {
-    transform: translateX(100vw) translateY(50px) rotate(-10deg);
-    opacity: 0;
-  }
-}
-
-
 p:last-of-type {
 	margin-bottom: 2%;
 }
