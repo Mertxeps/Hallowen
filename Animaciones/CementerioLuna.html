@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+
+    <html lang = "es">
+
+    <head>
+        <meta charset = "UTF-8">
+
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+        
+        <title>Cementerio de noche con luna llena</title>
+
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                min-height: 100vh;
+                background: #fafaf8;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+            }
+
+            .container {
+                position: relative;
+                width: 800px;
+                height: 800px;
+                background: linear-gradient(to bottom,
+                    #0a0e27 0%,
+                    #1a1f3a 30%,
+                    #2d1f3f 60%,
+                    #3d2644 100%);
+            }
+
+            .moon {
+                position: absolute;
+                top: 120px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 280px;
+                height: 280px;
+                border-radius: 50%;
+                background: radial-gradient(circle at 35% 35%,
+                    #fff9e6 0%,
+                    #ffeaa7 30%,
+                    #fab1a0 70%,
+                    #e17055 100%);
+                box-shadow:
+                    0 0 80px rgba(255, 249, 230, 0.4),
+                    0 0 160px rgba(255, 234, 167, 0.3),
+                    inset -20px -20px 60px rgba(225, 112, 85, 0.2);
+            }
+
+            .moon-crater {
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(225, 112, 85, 0.15);
+                box-shadow: inset 2px 2px 8px rgba(0, 0, 0, 0.2);
+            }
+
+            .moon-crater:nth-child(1) {
+                width: 40px;
+                height: 40px;
+                top: 60px;
+                left: 80px;
+            }
+
+            .moon-crater:nth-child(2) {
+                width: 28px;
+                height: 28px;
+                top: 140px;
+                right: 70px;
+            }
+
+            .moon-crater:nth-child(3) {
+                width: 35px;
+                height: 35px;
+                bottom: 80px;
+                left: 100px;
+            }
+
+            .moon-crater:nth-child(4) {
+                width: 22px;
+                height: 22px;
+                top: 100px;
+                left: 140px;
+            }
+
+            .landscape {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                height: 550px;
+                overflow: hidden;
+            }
+
+            .ground-layer {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                height: 100%;
+            }
+
+            .ground-back {
+                background: #1a2840;
+                clip-path: polygon(0% 75%, 8% 73%, 18% 76%, 32% 74%, 45% 78%,
+                    58% 75%, 72% 77%, 85% 74%, 95% 76%, 100% 75%,
+                    100% 100%, 0% 100%);
+            }
+
+            .ground-mid {
+                background: #0d1a2e;
+                clip-path: polygon(0% 78%, 12% 82%, 25% 80%, 38% 84%, 52% 81%,
+                    65% 83%, 78% 80%, 90% 82%, 100% 80%,
+                    100% 100%, 0% 100%);
+            }
+
+            .ground-front {
+                background: #000000;
+                clip-path: polygon(0% 82%, 15% 85%, 28% 83%, 42% 87%, 55% 85%,
+                    68% 86%, 82% 84%, 95% 86%, 100% 84%,
+                    100% 100%, 0% 100%);
+            }
+
+            .tombstone {
+                position: absolute;
+            }
+
+            .tombstone.back {
+                background: #1a2840;
+            }
+
+            .tombstone.back-1 {
+                left: 37%;
+                top: 68%;
+                transform: rotate(-8deg);
+                width: 32px;
+                height: 50px;
+                border-radius: 16px 16px 0 0;
+            }
+
+            .tombstone.back-2 {
+                right: 22%;
+                top: 69%;
+                transform: rotate(6deg);
+                width: 26px;
+                height: 42px;
+                border-radius: 4px 4px 0 0;
+            }
+
+            .tombstone.mid {
+                background: #0d1a2e;
+            }
+
+            .tombstone.mid-1 {
+                left: 8%;
+                top: 71%;
+                transform: rotate(12deg);
+                width: 40px;
+                height: 58px;
+                border-radius: 20px 20px 0 0;
+            }
+
+            .tombstone.mid-2 {
+                left: 52%;
+                top: 75%;
+                transform: rotate(4deg);
+                width: 34px;
+                height: 54px;
+                border-radius: 6px 6px 0 0;
+            }
+
+            .tombstone.mid-3 {
+                right: 10%;
+                top: 72%;
+                transform: rotate(9deg);
+                width: 38px;
+                height: 56px;
+                border-radius: 50% 50% 0 0;
+            }
+
+            .tombstone.front {
+                background: #000000;
+            }
+
+            .tombstone.front-1 {
+                left: 28%;
+                top: 74%;
+                transform: rotate(-7deg);
+                width: 48px;
+                height: 68px;
+                border-radius: 24px 24px 0 0;
+            }
+
+            .tombstone.front-2 {
+                right: 30%;
+                top: 76%;
+                transform: rotate(6deg);
+                width: 44px;
+                height: 64px;
+                border-radius: 8px 8px 0 0;
+            }
+
+            .cross {
+                position: absolute;
+            }
+
+            .cross-vertical {
+                width: 7px;
+                height: 55px;
+                position: relative;
+                margin: 0 auto;
+            }
+
+            .cross-horizontal {
+                width: 32px;
+                height: 7px;
+                position: absolute;
+                top: 14px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .cross.back {
+                top: 68%;
+            }
+
+            .cross.back .cross-vertical,
+            .cross.back .cross-horizontal {
+                background: #1a2840;
+            }
+
+            .cross.back .cross-vertical {
+                width: 6px;
+                height: 46px;
+            }
+
+            .cross.back .cross-horizontal {
+                width: 28px;
+                height: 6px;
+                top: 12px;
+            }
+
+            .cross.back-1 {
+                left: 62%;
+                transform: rotate(-5deg);
+            }
+
+            .cross.mid {
+                top: 73%;
+            }
+
+            .cross.mid .cross-vertical,
+            .cross.mid .cross-horizontal {
+                background: #0d1a2e;
+            }
+
+            .cross.mid .cross-vertical {
+                width: 7px;
+                height: 54px;
+            }
+
+            .cross.mid .cross-horizontal {
+                width: 32px;
+                height: 7px;
+                top: 14px;
+            }
+
+            .cross.mid-1 {
+                left: 45%;
+                transform: rotate(7deg);
+            }
+
+            .cross.front {
+                top: 74%;
+            }
+
+            .cross.front .cross-vertical,
+            .cross.front .cross-horizontal {
+                background: #000000;
+            }
+
+            .cross.front .cross-vertical {
+                width: 8px;
+                height: 62px;
+            }
+
+            .cross.front .cross-horizontal {
+                width: 38px;
+                height: 8px;
+                top: 16px;
+            }
+
+            .cross.front-1 {
+                left: 18%;
+                transform: rotate(-6deg);
+            }
+
+            .cross.front-2 {
+                right: 19%;
+                transform: rotate(-3deg);
+            }
+
+            .star {
+                position: absolute;
+                background: white;
+                border-radius: 50%;
+            }
+
+            .star:nth-child(1) {
+                top: 50px;
+                left: 100px;
+                width: 2px;
+                height: 2px;
+            }
+
+            .star:nth-child(2) {
+                top: 120px;
+                right: 150px;
+                width: 3px;
+                height: 3px;
+            }
+
+            .star:nth-child(3) {
+                top: 80px;
+                left: 300px;
+                width: 2px;
+                height: 2px;
+            }
+
+            .star:nth-child(4) {
+                top: 220px;
+                right: 250px;
+                width: 2px;
+                height: 2px;
+            }
+
+            .star:nth-child(5) {
+                top: 90px;
+                right: 400px;
+                width: 3px;
+                height: 3px;
+            }
+
+            .star:nth-child(6) {
+                top: 280px;
+                left: 200px;
+                width: 2px;
+                height: 2px;
+            }
+
+            .star:nth-child(7) {
+                top: 60px;
+                right: 180px;
+                width: 2px;
+                height: 2px;
+            }
+
+            .star:nth-child(8) {
+                top: 180px;
+                left: 450px;
+                width: 3px;
+                height: 3px;
+            }
+
+            .star:nth-child(9) {
+                top: 40px;
+                left: 550px;
+                width: 2px;
+                height: 2px;
+            }
+
+            .star:nth-child(10) {
+                top: 240px;
+                left: 120px;
+                width: 2px;
+                height: 2px;
+            }
+
+            .star:nth-child(11) {
+                top: 150px;
+                right: 320px;
+                width: 3px;
+                height: 3px;
+            }
+
+            .star:nth-child(12) {
+                top: 300px;
+                right: 80px;
+                width: 2px;
+                height: 2px;
+            }
+
+            .glow-layer {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background: radial-gradient(ellipse at 50% 25%,
+                    rgba(250, 177, 160, 0.15) 0%,
+                    transparent 60%);
+            }
+
+            .mist-layer {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 200px;
+                background: linear-gradient(to top,
+                    rgba(13, 2, 33, 0.6) 0%,
+                    rgba(26, 9, 51, 0.3) 40%,
+                    transparent 100%);
+            }
+
+            .mist-layer:nth-child(1) {
+                opacity: 1;
+            }
+
+            .mist-layer:nth-child(2) {
+                opacity: 0.7;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class = "container">
+            <div class = "glow-layer"></div>
+            <div class = "star"></div>
+            <div class = "star"></div>
+            <div class = "star"></div>
+            <div class = "star"></div>
+            <div class = "star"></div>
+            <div class = "star"></div>
+            <div class = "star"></div>
+            <div class = "star"></div>
+            <div class = "star"></div>
+            <div class = "star"></div>
+            <div class = "star"></div>
+            <div class = "star"></div>
+
+            <div class = "moon">
+                <div class = "moon-crater"></div>
+                <div class = "moon-crater"></div>
+                <div class = "moon-crater"></div>
+                <div class = "moon-crater"></div>
+            </div>
+
+            <div class = "landscape">
+            <div class = "ground-layer ground-back"></div>
+            
+            <div class = "tombstone back back-1"></div>
+            <div class = "tombstone back back-2"></div>
+            
+            <div class = "cross back back-1">
+                <div class = "cross-vertical"></div>
+                <div class = "cross-horizontal"></div>
+            </div>
+
+            <div class = "ground-layer ground-mid"></div>
+            
+            <div class = "tombstone mid mid-1"></div>
+            <div class = "tombstone mid mid-2"></div>
+            <div class = "tombstone mid mid-3"></div>
+            
+            <div class = "cross mid mid-1">
+                <div class = "cross-vertical"></div>
+                <div class = "cross-horizontal"></div>
+            </div>
+
+            <div class = "ground-layer ground-front"></div>
+            
+            <div class = "tombstone front front-1"></div>
+            <div class = "tombstone front front-2"></div>
+            
+            <div class = "cross front front-1">
+                <div class = "cross-vertical"></div>
+                <div class = "cross-horizontal"></div>
+            </div>
+            <div class = "cross front front-2">
+                <div class = "cross-vertical"></div>
+                <div class = "cross-horizontal"></div>
+            </div>
+
+            <div class = "mist-layer"></div>
+            <div class = "mist-layer"></div>
+            </div>
+        </div>
+    </body>
+    
+</html>

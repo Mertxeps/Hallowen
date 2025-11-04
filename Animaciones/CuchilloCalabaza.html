@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+    <html lang = "es">
+
+    <head>
+        <meta charset = "UTF-8">
+
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+
+        <title>Cuchillo corta calabazas</title>
+
+        <style>
+            /* Variables CSS */
+            :root {
+                --vmin: calc(min(100vw, 100vh));
+            }
+
+            /* Estilos base */
+            html {
+                font-size: calc(var(--vmin) * 0.01);
+                height: 100vh;
+                overflow: hidden;
+                cursor: none;
+                touch-action: none;
+            }
+
+            body {
+                background-color: #17191c;
+                width: 100vw;
+                height: 100vh;
+                position: relative;
+                margin: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* Estilos de la calabaza */
+            #pumpkin {
+                height: 70em;
+                width: 80em;
+                position: relative;
+            }
+
+            #mask {
+                width: 50%;
+                height: 82%;
+                position: absolute;
+                top: 11em;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            #mask::before,
+            #mask::after {
+                content: "";
+                position: absolute;
+                height: 100%;
+                width: 43em;
+                top: 50%;
+                transform: translateY(-50%);
+                border-radius: 46%;
+            }
+
+            #mask::before {
+                left: -19em;
+            }
+
+            #mask::after {
+                right: -19em;
+            }
+
+            .back,
+            .middle,
+            .front {
+                width: 100%;
+                height: calc(100% - 10em);
+                position: absolute;
+                bottom: 0;
+            }
+
+            .back::before,
+            .back::after,
+            .middle::before,
+            .middle::after {
+                content: "";
+                display: block;
+                position: absolute;
+                height: 100%;
+                width: 40em;
+                border-radius: 100%;
+            }
+
+            .back::before,
+            .back::after {
+                background-color: #e06924;
+            }
+
+            .back::after {
+                right: 0;
+            }
+
+            .middle::before,
+            .middle::after {
+                background-color: #e87e26;
+            }
+
+            .middle::before {
+                left: 10em;
+            }
+
+            .middle::after {
+                right: 10em;
+            }
+
+            .front::before {
+                background-color: #e68827;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .stem {
+                width: 8em;
+                height: 15em;
+                background-color: #844b36;
+                position: absolute;
+                left: 33em;
+                transform: rotate(-30deg);
+                border-top-left-radius: 70%;
+                border-top-right-radius: 10%;
+            }
+
+            .stem::before,
+            .stem::after {
+                content: "";
+                display: block;
+                position: absolute;
+            }
+
+            .stem::before {
+                background-color: inherit;
+                height: 100%;
+                width: 5em;
+                right: -0.5em;
+                top: 0.5em;
+                border-radius: 43%;
+                transform: rotate(6deg);
+            }
+
+            .stem::after {
+                background-color: #17191c;
+                height: 11em;
+                width: 6em;
+                left: -2em;
+                top: -1em;
+                border-radius: 100%;
+                transform: rotate(20deg);
+            }
+
+            .dot {
+                width: 1em;
+                aspect-ratio: 1;
+                border-radius: 100%;
+                background-color: black;
+                position: absolute;
+                pointer-events: none;
+                transform: translate(-50%, -50%);
+            }
+
+            .hole,
+            .cutout {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: #5d2c10;
+                pointer-events: none;
+            }
+
+            .cutout {
+                background-color: #e87e26;
+                animation: drop 1s linear forwards;
+            }
+
+            @keyframes drop {
+                from {
+                    top: 0;
+                }
+                to {
+                    top: 20em;
+                    transform: rotate(40deg);
+                    opacity: 0;
+                }
+            }
+
+            #cursor {
+                position: absolute;
+                transform: translate(0, -100%) scale(-1, 1);
+                background-image: url("https://em-content.zobj.net/source/apple/419/kitchen-knife_1f52a.png");
+                background-size: contain;
+                width: 15em;
+                aspect-ratio: 1;
+                pointer-events: none;
+                z-index: 99;
+            }
+        </style>
+    </head>
+
+    <body>
+        <audio id = "sfxCut">
+            <source src = "https://public-assets.content-platform.envatousercontent.com/f0a4c24a-1286-49d5-abf8-e0b39dc9984d/4318bb9b-3ea6-4fc0-aacf-b1646eccefdc/preview.m4a" type = "audio/mpeg">
+        </audio>
+
+        <audio id = "sfxHole">
+            <source src = "https://dn790007.ca.archive.org/0/items/Sound_Effects/Acoustic%20Guitar%20Maj.mp3" type = "audio/mpeg">
+        </audio>
+
+        <div id = "pumpkin">
+            <div class = "stem"></div>
+            <div class = "back"></div>
+            <div class = "middle"></div>
+            <div class = "front"></div>
+            <div id = "mask"></div>
+        </div>
+
+        <div id = "cursor"></div>
+    </body>
+
+    <script>
+        const V_MIN = Math.min(window.innerWidth, window.innerHeight);
+        const DOT_DISTANCE = V_MIN / 80;
+
+        document.getElementById('sfxCut').currentTime = 1;
+
+        let cut = [];
+        let isMouseDown = false;
+
+        function init() {
+            const cursor = document.getElementById('cursor');
+            
+            document.addEventListener("pointerdown", handlePointerDown);
+            document.addEventListener("pointerup", stopCutting);
+            document.addEventListener("pointermove", handlePointerMove);
+
+            function handlePointerDown(e) {
+                e.target.releasePointerCapture(e.pointerId);
+                setElementPosition(cursor, e.pageX, e.pageY);
+                isMouseDown = true;
+            }
+
+            function handlePointerMove(e) {
+                setElementPosition(cursor, e.pageX, e.pageY);
+
+                if (!isMouseDown) return;
+
+                const mask = document.getElementById('mask');
+                if (e.target !== mask) {
+                    stopCutting();
+                    return;
+                }
+
+                const newPoint = {
+                    x: e.pageX,
+                    y: e.pageY
+                };
+
+                if (cut.length) {
+                    const distanceToFirst = calculateDistance(cut.at(0), newPoint);
+
+                    if (cut.length > 3 && distanceToFirst < DOT_DISTANCE * 1.5) {
+                        drawHole();
+                        stopCutting();
+                        return;
+                    }
+
+                    const distanceToPrevious = calculateDistance(cut.at(-1), newPoint);
+                    if (distanceToPrevious < DOT_DISTANCE) return;
+                }
+
+                const dot = createDivWithClass("dot");
+                setElementPosition(dot, e.pageX, e.pageY);
+                document.body.appendChild(dot);
+
+                document.getElementById('sfxCut').play();
+
+                cut.push(newPoint);
+            }
+        }
+
+        function drawHole() {
+            const hole = createDivWithClass("hole");
+            const cutout = createDivWithClass("cutout");
+
+            const clipPoints = cut.map((p) => `${p.x}px ${p.y}px`).join(", ");
+            const clipPath = `polygon(${clipPoints})`;
+            hole.style.clipPath = clipPath;
+            cutout.style.clipPath = clipPath;
+            const firstPoint = cut.at(0);
+            cutout.style.transformOrigin = `${firstPoint.x}px ${firstPoint.y}px`;
+
+            document.body.appendChild(hole);
+            document.body.appendChild(cutout);
+
+            document.getElementById('sfxHole').currentTime = 0;
+            document.getElementById('sfxHole').play();
+
+            setTimeout(() => {
+                cutout.remove();
+            }, 1000);
+        }
+
+        function stopCutting() {
+            document.getElementById('sfxCut').pause();
+            document.getElementById('sfxCut').currentTime = 1;
+            isMouseDown = false;
+            document.querySelectorAll(".dot").forEach((el) => el.remove());
+            cut = [];
+        }
+
+        function createDivWithClass(className) {
+            const div = document.createElement("div");
+            div.classList.add(className);
+            return div;
+        }
+
+        function setElementPosition(el, x, y) {
+            el.style.left = `${x}px`;
+            el.style.top = `${y}px`;
+        }
+
+        function calculateDistance(a, b) {
+            return Math.hypot(b.x - a.x, b.y - a.y);
+        }
+
+        window.addEventListener('load', init);
+            </script>
+</html>
