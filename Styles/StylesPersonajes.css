@@ -16,14 +16,6 @@ header ul li:nth-of-type(4) {
   margin: 2% 0;
 }
 
-#Personajes > * {
-  margin-top: 2%;
-}
-
-#Personajes > *:first-child {
-  margin-top: 0;
-}
-
 /* --- MEDIA QUERIES --- */
 
 /* Para tables */

@@ -52,7 +52,13 @@ Container {
     font-size: 22px;
 }
 
+#Personajes > * {
+  margin-top: 2%;
+}
 
+#Personajes > *:first-child {
+  margin-top: 0;
+}
 
 
 
