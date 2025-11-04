@@ -56,11 +56,13 @@ Container {
   margin-top: 2%;
 }
 
-#Personajes > *:first-child {
+/* #Personajes > *:first-child {
+  margin-top: 0;
+} */
+
+#Personajes {
   margin-top: 0;
 }
-
-
 
 /* --- MEDIA QUERIES --- */
 
