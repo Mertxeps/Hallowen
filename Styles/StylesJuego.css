@@ -196,3 +196,15 @@ body {
     pointer-events: none;
     z-index: 99;
 }
+
+/* --- MEDIA QUERIES --- */
+
+/* Para tables */
+@media screen and (max-width: 768px) {
+
+}
+
+/* Para móviles */
+@media screen and (max-width: 480px) {
+
+}
