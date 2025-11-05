@@ -1,6 +1,6 @@
 
 const numSpiders = 8;
-const spiderImg = "Images/Arañas/Araña.jpg";
+const spiderImg = "Images/Arañas/Araña.png";
 const container = document.getElementById('spider-background');
 
 for (let i = 0; i < numSpiders; i++) {
