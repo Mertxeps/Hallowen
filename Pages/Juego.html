@@ -17,6 +17,7 @@
 		<link rel = "stylesheet" type = "text/css" href = "../Styles/StylesAranasBackground.css">
 
         <!-- <script type = "text/javascript" src = "../Js/AranasBackground.js" defer></script> -->
+		<script type = "text/javascript" src = "../Js/CuchilloCalabaza.Js" defer></script>
     </head>
 
     <body>
@@ -48,7 +49,13 @@
 				<!-- Fondo animado con arañas -->
         		<div id = "spider-background"></div>
 
-				<section>
+				<article class = "ExplicacionJuego">
+					<h1>Cómo jugar:</h1>
+					<p>😎 Usa el cuchillo para cortar la calabaza. Mantén pulsado el ratón y dibuja un círculo completo sobre ella para abrir un agujero. ¡Suelta para ver el corte y escucha el sonido!</p>
+					<p>😏 🕶️ Una vez cortada la calabaza, pulsar en el botón de <strong>Borrar cortes</strong> (debajo de la calabaza) para volver a reiniciar el juego.</p>
+				</article>
+
+				<section class = "JuegoCalabaza">
 					<audio id = "sfxCut">
 						<source src = "https://public-assets.content-platform.envatousercontent.com/f0a4c24a-1286-49d5-abf8-e0b39dc9984d/4318bb9b-3ea6-4fc0-aacf-b1646eccefdc/preview.m4a" type = "audio/mpeg">
 					</audio>
@@ -66,6 +73,8 @@
 					</div>
 
 					<div id = "cursor"></div>
+
+					<input type = "button" id = "resetCuts" value = "Borrar cortes">
 				</section>
             </div>
         </main>
