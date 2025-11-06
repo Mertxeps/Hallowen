@@ -44,10 +44,7 @@
 
         <main>
             <div class = "Container">
-				<div class = "CalabazaFestiva1"></div>
-
-				<!-- Fondo animado con arañas -->
-        		<div id = "spider-background"></div>
+				<!-- <div class = "CalabazaFestiva1"></div> -->
 
 				<article class = "ExplicacionJuego">
 					<h1>Cómo jugar:</h1>
@@ -55,7 +52,7 @@
 					<p>😏 🕶️ Una vez cortada la calabaza, pulsar en el botón de <strong>Borrar cortes</strong> (debajo de la calabaza) para volver a reiniciar el juego.</p>
 				</article>
 
-				<section class = "JuegoCalabaza">
+				<section id = "JuegoCalabaza">
 					<audio id = "sfxCut">
 						<source src = "https://public-assets.content-platform.envatousercontent.com/f0a4c24a-1286-49d5-abf8-e0b39dc9984d/4318bb9b-3ea6-4fc0-aacf-b1646eccefdc/preview.m4a" type = "audio/mpeg">
 					</audio>
@@ -72,8 +69,6 @@
 						<div id = "mask"></div>
 					</div>
 
-					<div id = "cursor"></div>
-
 					<input type = "button" id = "resetCuts" value = "Borrar cortes">
 				</section>
             </div>
@@ -86,6 +81,7 @@
 				</div>
 			</div>
 		</footer>
+			<div id = "cursor"></div>
     </body>
 
 </html>

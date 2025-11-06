@@ -1,4 +1,5 @@
-const V_MIN = Math.min(window.innerWidth, window.innerHeight);
+const contenedorCalabaza = document.getElementById("JuegoCalabaza")
+const V_MIN = Math.min(window.innerWidth, window.innerHeight); // probar cambiar despues
     const DOT_DISTANCE = V_MIN / 80;
 
     document.getElementById('sfxCut').currentTime = 1;
@@ -9,9 +10,9 @@ const V_MIN = Math.min(window.innerWidth, window.innerHeight);
     function init() {
         const cursor = document.getElementById('cursor');
             
-        document.addEventListener("pointerdown", handlePointerDown);
-        document.addEventListener("pointerup", stopCutting);
-        document.addEventListener("pointermove", handlePointerMove);
+        contenedorCalabaza.addEventListener("pointerdown", handlePointerDown);
+        contenedorCalabaza.addEventListener("pointerup", stopCutting);
+        contenedorCalabaza.addEventListener("pointermove", handlePointerMove);
 
         function handlePointerDown(e) {
             e.target.releasePointerCapture(e.pointerId);
@@ -69,8 +70,8 @@ const V_MIN = Math.min(window.innerWidth, window.innerHeight);
         const firstPoint = cut.at(0);
         cutout.style.transformOrigin = `${firstPoint.x}px ${firstPoint.y}px`;
 
-        document.body.appendChild(hole);
-        document.body.appendChild(cutout);
+       contenedorCalabaza.appendChild(hole); //cambiar
+        contenedorCalabaza.appendChild(cutout);
 
         document.getElementById('sfxHole').currentTime = 0;
         document.getElementById('sfxHole').play();
