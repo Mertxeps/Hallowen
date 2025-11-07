@@ -1,24 +1,24 @@
 /* 🔹 Contenedor del fondo animado */
-            #spider-background {
-                position: fixed;     /* permanece fijo detrás del contenido */
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                overflow: hidden;
-                z-index: 0;          /* debajo del contenido */
-                pointer-events: none; /* evita que bloqueen clics en el contenido */
-            }
+    #spider-background {
+        position: fixed;     /* permanece fijo detrás del contenido */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 0;          /* debajo del contenido */
+        pointer-events: none; /* evita que bloqueen clics en el contenido */
+    }
 
-            .spider {
-                position: absolute;
-                width: 100px;
-                height: auto;
-                max-width: 100px;
-                object-fit: contain;
-                transition: all 3s linear;
-            }
+    .spider {
+        position: absolute;
+        width: 100px;
+        height: auto;
+        max-width: 100px;
+        object-fit: contain;
+        transition: all 3s linear;
+    }
 
-            /* .spider {
-                filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.3));
-            } */
+    /* .spider {
+        filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.3));
+    } */
