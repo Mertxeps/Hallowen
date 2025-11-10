@@ -56,10 +56,6 @@ Container {
   margin-top: 2%;
 }
 
-/* #Personajes > *:first-child {
-  margin-top: 0;
-} */
-
 #Personajes {
   margin-top: 0;
 }
@@ -68,10 +64,44 @@ Container {
 
 /* Para tables */
 @media screen and (max-width: 768px) {
+  #ListaPersonajesTitulo {
+      font-size: 1.8rem; /* Reducimos un poco el tamaño del título */
+    margin-top: 5%;
+  }
 
+  #Personajes {
+    flex-direction: column; /* Apilamos los personajes verticalmente si hace falta */
+    gap: 3%;
+  }
+
+  .Personaje {
+    width: 45%; /* Más ancho que en escritorio para ocupar mejor el espacio */
+    margin: 0 auto 2%; /* Centrado y separacion inferior */
+  }
+
+  .Personaje p {
+    font-size: 18px; /* Texto más pequeño */
+  }
 }
 
 /* Para móviles */
 @media screen and (max-width: 480px) {
+  #ListaPersonajesTitulo {
+    font-size: 1.5rem;
+    margin-top: 5%;
+  }
 
+  #Personajes {
+    flex-direction: column;
+    gap: 4%;
+  }
+
+  .Personaje {
+    width: 90%; /* Ocupamos casi todo el ancho de la pantalla */
+    margin: 0 auto 3%;
+  }
+
+  .Personaje p {
+    font-size: 16px; /* Texto más pequeño para pantallas pequeñas */
+  }
 }

@@ -16,42 +16,56 @@ header ul li:nth-of-type(4) {
   margin: 2% 0;
 }
 
-/* --- MEDIA QUERIES --- */
-
-/* Para tables */
-@media screen and (max-width: 768px) {
-  .CalabazaFestiva1 {
-    width: 80vw;   /* Más ancha en pantallas medianas */
-    height: 50vh;  /* Un poco más baja para que no ocupe demasiado */
-    margin: 4% auto;
-  }
-
-	.Imagenes {
-    flex-direction: column;
-    gap: 2rem;                 /* Reduce el espacio entre las imágenes */
-  }
-
-  .Imagenes img {
-    width: 70vw;
-    height: 60vh;
-  }
+#Personajes {
+    display: grid;
+    grid-template-columns: 1fr;  /* una columna, apilados verticalmente */
+    row-gap: 1.5rem;             /* espacio vertical entre cuadros */
+    width: 90%;
+    margin: 2% auto;
 }
 
-/* Para móviles */
-@media screen and (max-width: 480px) {
-  .CalabazaFestiva1 {
-    width: 90vw;   		/* Casi todo el ancho de la pantalla */
-    height: 40vh; 		/* Más compacta en vertical */
-    margin: 5% auto;
-  }
+/* --- MEDIA QUERIES --- */
 
+/* Tablets */
+@media screen and (max-width: 768px) {
 	.Imagenes {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
+		flex-direction: column;
+		gap: 2rem;
+		align-items: center;
+	}
 
-  .Imagenes img {
-    width: 85vw;		/* Casi todo el ancho de la pantalla */
-    height: 50vh;       /* Más baja para evitar scroll excesivo */
-  }
+	.Imagenes img {
+		width: 70vw;
+		height: auto;
+		max-height: 60vh;
+	}
+
+	#Personajes {
+		flex-direction: column;  /* apilados verticalmente */
+		width: 100%;
+		gap: 1.5rem;             /* espacio entre cuadros */
+		margin: 2% auto;         /* centrado */
+	}
+}
+
+/* Móviles */
+@media screen and (max-width: 480px) {
+	.Imagenes {
+		flex-direction: column;
+		gap: 1.5rem;
+		align-items: center;
+	}
+
+	.Imagenes img {
+		width: 85vw;
+		height: auto;
+		max-height: 50vh;
+	}
+
+	#Personajes {
+		flex-direction: column;  /* apilados verticalmente */
+		width: 100%;
+		gap: 1.5rem;             /* espacio entre cuadros */
+		margin: 2% auto;         /* centrado */
+	}
 }

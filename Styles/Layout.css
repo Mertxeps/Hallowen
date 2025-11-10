@@ -15,7 +15,6 @@ body {
 .BarrasNavegacion {
     display: flex;
     justify-content: space-between;
-    /* align-items: center; */
 	margin: auto;
 	width: 100%;
     padding: 10px 5%;
@@ -31,7 +30,6 @@ body {
 
 .CalabazaFestiva {
     width: 40%;
-    /* height: 50px; */
 }
 
 .menu {
@@ -82,9 +80,6 @@ body {
 }
 
 /* --- MEDIA QUERIES --- */
-
-/* para portátiles  */
-/* @media (min-width: 1281px) and (max-width: 1440px) {} */
 
 /* Para tables */
 @media screen and (max-width: 768px) {
